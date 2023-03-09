@@ -1,62 +1,54 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
+using System.Threading;
 using MQTTnet;
-using MQTTnet.Client.Options;
-using MQTTnet.Extensions.ManagedClient;
-using Newtonsoft.Json.Linq;
+using MQTTnet.Client.Receiving;
+using MQTTnet.Server;
+using Newtonsoft.Json;
 
-class Program
+namespace MqttServerExample
 {
-    static async Task Main(string[] args)
+    class Program
     {
-        // Configure the MQTT client options
-        var options = new MqttClientOptionsBuilder()
-            .WithTcpServer("localhost", 1883)
-            .WithClientId("csharp_client")
-            .Build();
-
-        // Create a new MQTT client instance
-        var client = new MqttFactory().CreateManagedMqttClient();
-        
-        // Connect to the MQTT broker
-        await client.StartAsync(
-            new ManagedMqttClientOptionsBuilder()
-                .WithAutoReconnectDelay(TimeSpan.FromSeconds(5))
-                .WithClientOptions(options)
-                .Build());
-
-        // Subscribe to the topic where JSON messages are received
-        await client.SubscribeAsync("mqtt/LED", MQTTnet.Protocol.MqttQualityOfServiceLevel.ExactlyOnce);
-
-        // Listen for incoming MQTT messages
-        client.UseApplicationMessageReceivedHandler(e =>
+        static async Task Main(string[] args)
         {
-            // Check if the message contains a JSON payload
-            if (e.ApplicationMessage.Payload != null)
+            var options = new MqttServerOptionsBuilder()
+                .WithDefaultEndpoint()
+                .WithDefaultEndpointPort(1883)
+                .Build();
+
+            var mqttServer = new MqttFactory().CreateMqttServer();
+            mqttServer.ClientConnectedHandler = new MqttServerClientConnectedHandlerDelegate(e =>
             {
-                string payload = Encoding.UTF8.GetString(e.ApplicationMessage.Payload);
-                try
-                {
-                    // Parse the JSON payload
-                    JObject json = JObject.Parse(payload);
+                Console.WriteLine($"Client '{e.ClientId}' connected.");
+            });
+            mqttServer.ClientDisconnectedHandler = new MqttServerClientDisconnectedHandlerDelegate(e =>
+            {
+                Console.WriteLine($"Client '{e.ClientId}' disconnected.");
+            });
+            mqttServer.ApplicationMessageReceivedHandler = new MqttApplicationMessageReceivedHandlerDelegate(async e =>
+            {
+                string messagePayload = Encoding.UTF8.GetString(e.ApplicationMessage.Payload);
+                dynamic messageJson = JsonConvert.DeserializeObject(messagePayload);
+                Console.WriteLine($"Received message: {messageJson}");
 
-                    // Publish the JSON payload to the "mqtt/LED" topic
-                    client.PublishAsync(new MqttApplicationMessageBuilder()
-                        .WithTopic("mqtt/LED")
-                        .WithPayload(json.ToString())
-                        .WithQualityOfServiceLevel(MQTTnet.Protocol.MqttQualityOfServiceLevel.ExactlyOnce)
-                        .Build());
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error parsing JSON payload: {ex.Message}");
-                }
-            }
-        });
+                // Publish message to all clients
+                var message = new MqttApplicationMessageBuilder()
+                    .WithTopic(e.ApplicationMessage.Topic)
+                    .WithPayload(Encoding.UTF8.GetBytes(messagePayload))
+                    .WithExactlyOnceQoS()
+                    .WithRetainFlag()
+                    .Build();
+                await mqttServer.PublishAsync(message, CancellationToken.None);
+            });
 
-        Console.WriteLine("Press any key to exit.");
-        Console.ReadLine();
+            await mqttServer.StartAsync(options);
+            Console.WriteLine("MQTT broker started.");
 
-        // Disconnect from the MQTT broker
-        await client.StopAsync();
+            Console.ReadLine();
+
+            await mqttServer.StopAsync();
+            Console.WriteLine("MQTT broker stopped.");
+        }
     }
 }
