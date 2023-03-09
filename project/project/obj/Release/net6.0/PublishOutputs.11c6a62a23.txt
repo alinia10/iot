@@ -1,0 +1,11 @@
+E:\Codes\IoT\iot\project\project\build\project.exe
+E:\Codes\IoT\iot\project\project\build\project.dll
+E:\Codes\IoT\iot\project\project\build\project.deps.json
+E:\Codes\IoT\iot\project\project\build\project.runtimeconfig.json
+E:\Codes\IoT\iot\project\project\build\project.pdb
+E:\Codes\IoT\iot\project\project\build\Microsoft.Extensions.Logging.Abstractions.dll
+E:\Codes\IoT\iot\project\project\build\MQTTnet.dll
+E:\Codes\IoT\iot\project\project\build\MQTTnet.Extensions.ManagedClient.dll
+E:\Codes\IoT\iot\project\project\build\Newtonsoft.Json.dll
+E:\Codes\IoT\iot\project\project\build\Npgsql.dll
+E:\Codes\IoT\iot\project\project\build\System.Device.Gpio.dll
