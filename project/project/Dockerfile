@@ -7,7 +7,7 @@ COPY ["project.csproj", "project/"]
 RUN dotnet restore "project/project.csproj"
 COPY . .
 WORKDIR "/src/project"
-RUN dotnet build "project.csproj" -c Release -o /app/build
+RUN dotnet build "project.csproj" -c Release -o /app/build --runtime linux-x64
 
 FROM build AS publish
 RUN dotnet publish "project.csproj" -c Release -o /app/publish
