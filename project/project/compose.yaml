@@ -1,0 +1,39 @@
+version: '3.7'
+
+services:
+
+  web:
+    container_name: 'aspnetcoreapp'
+    image: 'aspnetcoreapp'
+    build:
+      context: .
+      # dockerfile: .Dockerfile
+    ports:
+     - "5000:5000"
+    depends_on:
+     - "postgres"
+    networks:
+      - iot_network
+    volumes:
+      - ./logs/web:/home/logs
+
+  postgres:
+    container_name: 'postgres'
+    image: postgres
+
+    environment:
+      # change this for a "real" app!
+      POSTGRES_PASSWORD: ${PASS}
+      POSTGRES_USER: ${USERNAME}
+      POSTGRES_DB: ${SERVER}
+    ports:
+      - '5432:5432'
+    networks:
+      - iot_network
+    volumes:
+      - ./logs/postgres:/home/logs
+
+
+networks:
+  iot_network:
+    driver: bridge
