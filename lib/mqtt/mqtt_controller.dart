@@ -3,7 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:mqtt_client/mqtt_client.dart';
 import 'package:snowa/mqtt/mqtt_client.dart';
 
-import '../device/logic.dart';
+import '../screens/home/home_logic.dart';
 
 abstract class MqttLogic extends GetxController {
   MqttClientController clientController = GetIt.instance.get<MqttClientController>();

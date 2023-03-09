@@ -6,7 +6,7 @@ import 'package:loader_overlay/loader_overlay.dart';
 import 'package:mqtt_client/mqtt_client.dart';
 
 import '../model/device.dart';
-import 'logic.dart';
+import '../screens/home/home_logic.dart';
 
 /*
 mqtt/esp32/temp
@@ -14,7 +14,7 @@ mqtt/esp32/temp
  */
 
 class DevicePage extends StatelessWidget {
-  final logic = Get.put(DeviceLogic());
+  final logic = Get.put(HomeLogic());
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +50,7 @@ class DevicePage extends StatelessWidget {
               case MqttConnectionState.disconnected:
                 return Column(
                   children: [
-                    const Text('Disconnected').paddingSymmetric(vertical: 20),
+                    const Text('Connection Failed').paddingSymmetric(vertical: 20),
                     ElevatedButton(
                       onPressed: () {
                         logic.tryConnect();

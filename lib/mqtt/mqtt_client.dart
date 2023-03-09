@@ -9,7 +9,7 @@ import 'package:snowa/mqtt/mqtt_controller.dart';
 import '../device/topic_creator.dart';
 
 class MqttClientController {
-  MqttServerClient client = MqttServerClient('test.mosquitto.org', 'snowa');
+  MqttServerClient client = MqttServerClient('192.168.159.73', 'snowa');
   MqttLogic? logic;
 
    MqttClientController._(){

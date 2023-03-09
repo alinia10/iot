@@ -9,9 +9,9 @@ import 'package:mqtt_client/mqtt_client.dart';
 import 'package:snowa/device/topic_creator.dart';
 import 'package:snowa/mqtt/mqtt_controller.dart';
 
-import '../model/device.dart';
+import '../../model/device.dart';
 
-class DeviceLogic extends MqttLogic {
+class HomeLogic extends MqttLogic {
   static const LED = "LED";
   final devices = [
     Device(LED, "0", DeviceStatus.OFF.obs),

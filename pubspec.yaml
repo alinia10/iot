@@ -43,7 +43,6 @@ dependencies:
   flutter_svg:
   get:
   get_it:
-  retrofit:
   logger:
   mqtt_client: ^9.8.0
   loader_overlay: ^2.1.0
@@ -53,7 +52,6 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  retrofit_generator:
   build_runner:
   json_serializable:
 
@@ -84,6 +82,7 @@ flutter:
     - assets/certs/client.crt
     - assets/certs/client.key
     - assets/certs/mosquitto.org.crt
+    - assets/images/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
