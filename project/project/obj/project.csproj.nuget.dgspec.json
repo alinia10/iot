@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Codes\\IoT\\project\\project\\project.csproj": {}
+    "E:\\Codes\\IoT\\iot\\project\\project\\project.csproj": {}
   },
   "projects": {
-    "E:\\Codes\\IoT\\project\\project\\project.csproj": {
+    "E:\\Codes\\IoT\\iot\\project\\project\\project.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Codes\\IoT\\project\\project\\project.csproj",
+        "projectUniqueName": "E:\\Codes\\IoT\\iot\\project\\project\\project.csproj",
         "projectName": "project",
-        "projectPath": "E:\\Codes\\IoT\\project\\project\\project.csproj",
+        "projectPath": "E:\\Codes\\IoT\\iot\\project\\project\\project.csproj",
         "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "E:\\Codes\\IoT\\project\\project\\obj\\",
+        "outputPath": "E:\\Codes\\IoT\\iot\\project\\project\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config"

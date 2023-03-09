@@ -1,24 +1,19 @@
-﻿using MQTTnet;
-using MQTTnet.Server;
-using System.Text;
-using static System.Console;
-using Npgsql;
-using project;
-
+﻿using project;
+using System;
 class Project
     {
-        public static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            PostgresConnection conn = new PostgresConnection("localhost", "5432", "mydatabase", "myusername", "mypassword");
-            conn.OpenConnection();
-            NpgsqlDataReader reader = conn.ExecuteQuery("SELECT * FROM history");
-            while (reader.Read())
-            {
-                Console.WriteLine($"Column 1: {reader.GetString(0)}, Column 2: {reader.GetString(1)}");
-            }
+            var server = System.Environment.GetEnvironmentVariable("server");
+            var port = System.Environment.GetEnvironmentVariable("port");
+            var username = System.Environment.GetEnvironmentVariable("username");
+            var pass = System.Environment.GetEnvironmentVariable("pass");
+            MqttServerHandler mqttServerHandler = new MqttServerHandler($"Server={server};Port={port};Username={username};Password={pass};");
+            await mqttServerHandler.Start();
         
-            conn.CloseConnection();
-            
+            Console.WriteLine("Press any key to stop the MQTT server.");
+            Console.ReadKey();
+
         }
     }
 
