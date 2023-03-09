@@ -36,3 +36,6 @@ E:\Codes\IoT\iot\project\project\obj\Debug\net6.0\project.dll
 E:\Codes\IoT\iot\project\project\obj\Debug\net6.0\ref\project.dll
 E:\Codes\IoT\iot\project\project\obj\Debug\net6.0\project.pdb
 E:\Codes\IoT\iot\project\project\obj\Debug\net6.0\project.genruntimeconfig.cache
+E:\Codes\IoT\iot\project\project\bin\Debug\net6.0\Newtonsoft.Json.dll
+E:\Codes\IoT\iot\project\project\bin\Debug\net6.0\System.Device.Gpio.dll
+E:\Codes\IoT\iot\project\project\bin\Debug\net6.0\MQTTnet.Extensions.ManagedClient.dll
