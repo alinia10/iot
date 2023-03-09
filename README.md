@@ -1,13 +1,17 @@
 # Lamp Control and Temperature Monitoring using Flutter, Embedded Programming, C# MQTT and DevOps
 
-#Project Overview
+# Project Overview
+
 This project is an IoT-based solution that allows users to control lamps and monitor temperature using a Flutter-based mobile application, embedded programming, C# MQTT, and DevOps practices.
 
 The project is divided into four main components:
 
 1. **Embedded Programming** - This component involves programming a microcontroller to read temperature data and control the lamps. The microcontroller is connected to an MQTT broker that publishes temperature data and listens to messages to control the lamps.
+
 2. **C# MQTT** - This component involves programming a C# application to act as an MQTT broker that communicates with the embedded programming component and the Flutter-based mobile application.
+
 3. **Flutter-Based Mobile Application** - This component involves programming a mobile application using the Flutter framework that communicates with the MQTT broker to control the lamps and display temperature data.
+
 4. **DevOps** - This component involves using tools and practices such as version control, continuous integration, and continuous deployment to streamline the development and deployment process.
 
 # Requirements
