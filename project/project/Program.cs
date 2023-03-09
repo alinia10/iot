@@ -10,7 +10,12 @@ namespace MqttServerExample
 {
     class Program
     {
-        static async Task Main(string[] args)
+        static void Main(string[] args)
+        {
+            MainAsync(args).GetAwaiter().GetResult();
+        }
+        
+        static async Task MainAsync(string[] args)
         {
             var options = new MqttServerOptionsBuilder()
                 .WithDefaultEndpoint()
