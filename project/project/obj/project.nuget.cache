@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "TQuh807kR2RJdQjw0CbyTNKOtXpb0tBn7fwjDbcsvA9dnLSM2v83DK8B7lw7FkVfSUeNjohMst5W1O6kh/UARQ==",
+  "success": true,
+  "projectFilePath": "E:\\Codes\\IoT\\project\\project\\project.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0\\microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\ASUS\\.nuget\\packages\\mqttnet\\3.1.1\\mqttnet.3.1.1.nupkg.sha512",
+    "C:\\Users\\ASUS\\.nuget\\packages\\npgsql\\8.0.0-preview.1\\npgsql.8.0.0-preview.1.nupkg.sha512",
+    "C:\\Users\\ASUS\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
